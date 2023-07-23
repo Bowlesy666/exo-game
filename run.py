@@ -13,16 +13,16 @@ board = [' ' for i in range(9)]
 
 
 def create_board():
-    print('   |   |   ')
+    print('1  |2  |3  ')
     print(' ' + board[0] + ' | ' + board[1] + ' | ' + board[2])
     print('   |   |   ')
     print('-----------')
-    print('   |   |   ')
-    print(' ' + board[0] + ' | ' + board[1] + ' | ' + board[2])
+    print('4  |5  |6  ')
+    print(' ' + board[3] + ' | ' + board[4] + ' | ' + board[5])
     print('   |   |   ')
     print('-----------')
-    print('   |   |   ')
-    print(' ' + board[0] + ' | ' + board[1] + ' | ' + board[2])
+    print('7  |8  |9  ')
+    print(' ' + board[6] + ' | ' + board[7] + ' | ' + board[8])
     print('   |   |   ')
 
 
