@@ -2,6 +2,7 @@
 run_game
 create_board - done
 validate_input
+update_board
 check_if_empty
 check_for_winner
 computer_random_move
@@ -49,8 +50,20 @@ def run_game(player_name):
     receiving input from player and taking the computers turns
 
     """
-    print(f"\n\n{player_name} you're up! Choose an empty space (1-9)")
+    print(f"\n\n{player_name} you're up!")
     create_board()
+    player_input = input('Choose an empty space (1-9)')
+    try:
+        if int(player_input) < 1:
+            print('number is too little!')
+        elif int(player_input) > 9:
+            print('number is too big!')
+    except ValueError:
+        print('Hey, hey. were choosing numbers here! stay on track!')
+    finally:
+        print('this is the finally part')
+        update_board()
+        
 
 
 welcome_message = get_welcome_message('welcome.txt')
