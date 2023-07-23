@@ -11,7 +11,6 @@ computer_random_move
 
 board = [' ' for i in range(9)]
 
-
 def create_board():
     print('1  |2  |3  ')
     print(' ' + board[0] + ' | ' + board[1] + ' | ' + board[2])
@@ -35,4 +34,13 @@ def run_game():
     create_board()
 
 
+def get_welcome_message(file):
+    data = open(file)
+    file_data = data.read()
+    data.close()
+    return file_data
+
+    
+welcome_message = get_welcome_message('welcome.txt')
+print(welcome_message)
 run_game()
