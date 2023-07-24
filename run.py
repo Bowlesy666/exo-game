@@ -5,7 +5,7 @@ done - validate_input
 done - update_board
 done - check_if_empty
 check_for_winner -
-check_game_over
+check_game_over > we have a winner
 done -computer_random_move
 play_again
 for loop - score keeping
@@ -14,6 +14,11 @@ import random
 
 
 board = [' ' for i in range(9)]
+winning_combos = [
+    (0, 1, 2), (3, 4, 5), (6, 7, 8),  # rows
+    (0, 3, 6), (1, 4, 7), (2, 5, 8),  # columns
+    (0, 4, 8), (2, 4, 6)  # diagonals
+    ]
 player_x = 'X'
 player_o = 'O'
 
@@ -70,7 +75,11 @@ def check_for_winner():
     Checks winning combinations after player moves
     """
     print('Checking for winner...')
-    return False
+    for combo in winning_combos:
+        zero, one, two = combo
+        if board[zero] == board[one] == board[two] != ' ':
+            print("We have a weener!")
+            return True
 
 
 def check_game_over():
@@ -109,6 +118,7 @@ def run_game(player_name):
                 if check_game_over():
                     print('Well that was fun!')
                     # add reset_game/ play_again
+                    break
 
                 computer_random_choice()
         except ValueError:
