@@ -6,8 +6,7 @@ txt files
 import random
 
 
-gameboard_locations_list = [' ' for i in range(9)]
-location = gameboard_locations_list
+location = [' ' for i in range(9)]
 winning_combos = [
     (0, 1, 2), (3, 4, 5), (6, 7, 8),  # Winning rows
     (0, 3, 6), (1, 4, 7), (2, 5, 8),  # Winning columns
@@ -127,7 +126,7 @@ def play_again(player_name):
     score_display(player_name)
     while True:
         play_again_input = input(
-            f">>> {player_name}, do you want to play again?: (y/n) ")
+            f">> {player_name}, do you want to play again?: (y/n) ")
         print(play_again_input.lower())
         if play_again_input.lower() not in ('y', 'n'):
             print(' Invalid value, please use lowercase y or n.....')
@@ -175,32 +174,33 @@ def run_game(player_name):
 
     """
     while True:
-        print(f"\n\n {player_name} you're up!\n")
+        print(f"\n {player_name} you're up!\n")
         display_gameboard()
-        player_location_input = int(input('>>> Choose an empty space (1-9) '))
         try:
-            if int(player_location_input) < 1:
-                print(' Number is too little! Try again...\n')
-            elif int(player_location_input) > 9:
-                print(' Number is too big! Try again...\n')
-            elif gameboard_locations_list[player_location_input - 1] != ' ':
-                print(' Position is already occupied! Try again...\n')
-            else:
-                update_gameboard(int(player_location_input), player_x)
-                if check_game_over(player_x):
-                    if play_again(player_name):
-                        continue
-                    else:
-                        break
-
-                computer_random_choice()
-                if check_game_over(player_o):
-                    if play_again(player_name):
-                        continue
-                    else:
-                        break
+            player_location_input = int(input('>> Choose an empty space(1-9)'))
         except ValueError:
-            print(' Hey, hey. were choosing numbers here! stay on track!\n')
+            print('\n Hey, hey. were choosing numbers here! stay on track!')
+            continue
+        if int(player_location_input) < 1:
+            print(' Number is too little! Try again...\n')
+        elif int(player_location_input) > 9:
+            print(' Number is too big! Try again...\n')
+        elif location[player_location_input - 1] != ' ':
+            print(' Position is already occupied! Try again...\n')
+        else:
+            update_gameboard(int(player_location_input), player_x)
+            if check_game_over(player_x):
+                if play_again(player_name):
+                    continue
+                else:
+                    break
+
+            computer_random_choice()
+            if check_game_over(player_o):
+                if play_again(player_name):
+                    continue
+                else:
+                    break
 
 
 def main():
@@ -210,7 +210,7 @@ def main():
     then runs game and passes player name
     """
     print(get_message('welcome.txt'))
-    player_name = input('>>> Hey Player! What is your name?: ')
+    player_name = input('>> Hey Player! What is your name?: ')
     run_game(player_name.capitalize())
 
 
