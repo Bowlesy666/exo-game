@@ -25,17 +25,17 @@ def display_gameboard():
     each section will be numbered to help player
     selection area in centre of each section
     """
-    print('1  |2  |3  ')
-    print(' ' + location[0] + ' | ' + location[1] + ' | ' + location[2])
-    print('   |   |   ')
-    print('-----------')
-    print('4  |5  |6  ')
-    print(' ' + location[3] + ' | ' + location[4] + ' | ' + location[5])
-    print('   |   |   ')
-    print('-----------')
-    print('7  |8  |9  ')
-    print(' ' + location[6] + ' | ' + location[7] + ' | ' + location[8])
-    print('   |   |   ')
+    print('   1  |2  |3  ')
+    print('    ' + location[0] + ' | ' + location[1] + ' | ' + location[2])
+    print('      |   |   ')
+    print('   -----------')
+    print('   4  |5  |6  ')
+    print('    ' + location[3] + ' | ' + location[4] + ' | ' + location[5])
+    print('      |   |   ')
+    print('   -----------')
+    print('   7  |8  |9  ')
+    print('    ' + location[6] + ' | ' + location[7] + ' | ' + location[8])
+    print('      |   |   ')
 
 
 def score_display(player_name):
@@ -88,7 +88,7 @@ def computer_random_choice():
         random_position = random.randint(1, 9)
         if location[random_position - 1] == ' ':
             update_gameboard(random_position, player_o)
-            print(f"Your opponent chose {random_position}")
+            print(f"\n Your opponent chose {random_position}")
             break
 
 
@@ -127,10 +127,10 @@ def play_again(player_name):
     score_display(player_name)
     while True:
         play_again_input = input(
-            f"{player_name}, do you want to play again?: (y/n)")
+            f">>> {player_name}, do you want to play again?: (y/n) ")
         print(play_again_input.lower())
         if play_again_input.lower() not in ('y', 'n'):
-            print('Invalid value, please use lowercase y or n.....')
+            print(' Invalid value, please use lowercase y or n.....')
             continue
 
         if play_again_input == 'y':
@@ -145,7 +145,6 @@ def check_for_winner():
     """
     Checks winning combinations after player moves
     """
-    print('Checking for winner...')
     for combo in winning_combos:
         zero, one, two = combo
         if location[zero] == location[one] == location[two] != ' ':
@@ -157,7 +156,6 @@ def check_game_over(player_name):
     Checks if game over - if winner announced or
     if board is full
     """
-    print('checking for game over...')
     if check_for_winner():
         score_update(player_name)
         winner_display(player_name)
@@ -177,16 +175,16 @@ def run_game(player_name):
 
     """
     while True:
-        print(f"\n\n{player_name} you're up!")
+        print(f"\n\n {player_name} you're up!\n")
         display_gameboard()
-        player_location_input = int(input('Choose an empty space (1-9)'))
+        player_location_input = int(input('>>> Choose an empty space (1-9) '))
         try:
             if int(player_location_input) < 1:
-                print('number is too little!')
+                print(' Number is too little! Try again...\n')
             elif int(player_location_input) > 9:
-                print('number is too big!')
+                print(' Number is too big! Try again...\n')
             elif gameboard_locations_list[player_location_input - 1] != ' ':
-                print('Position is already occupied! Try again...')
+                print(' Position is already occupied! Try again...\n')
             else:
                 update_gameboard(int(player_location_input), player_x)
                 if check_game_over(player_x):
@@ -202,7 +200,7 @@ def run_game(player_name):
                     else:
                         break
         except ValueError:
-            print('Hey, hey. were choosing numbers here! stay on track!')
+            print(' Hey, hey. were choosing numbers here! stay on track!\n')
 
 
 def main():
@@ -212,7 +210,7 @@ def main():
     then runs game and passes player name
     """
     print(get_message('welcome.txt'))
-    player_name = input('Hey Player! What is your name?: ')
+    player_name = input('>>> Hey Player! What is your name?: ')
     run_game(player_name.capitalize())
 
 
