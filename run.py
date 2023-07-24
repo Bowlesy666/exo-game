@@ -71,15 +71,36 @@ def computer_random_choice():
 
 
 def winner_display(player):
+    """
+    Checks who the player is that won,
+    displays the correct message
+    to console, calls next game and
+    updates score board
+    """
     if player == 'X':
         message_file = 'winner.txt'
     else:
         message_file = 'loser.txt'
     print(get_message(message_file))
+    create_board()
+    play_again()
+
+
+def play_again():
+    """
+    asks player if they want to continue playing
+    or to return the final score
+    """
+    input("Do you want to play again?: ")
 
 
 def no_winner_display():
-    print(f"no bugger won")
+    """
+    Displays tie message and calls next game
+    """
+    print(get_message('tie.txt'))
+    create_board()
+    play_again()
 
 
 def check_for_winner():
