@@ -15,12 +15,14 @@ import random
 
 board = [' ' for i in range(9)]
 winning_combos = [
-    (0, 1, 2), (3, 4, 5), (6, 7, 8),  # rows
-    (0, 3, 6), (1, 4, 7), (2, 5, 8),  # columns
-    (0, 4, 8), (2, 4, 6)  # diagonals
+    (0, 1, 2), (3, 4, 5), (6, 7, 8),  # Winning rows
+    (0, 3, 6), (1, 4, 7), (2, 5, 8),  # Winning columns
+    (0, 4, 8), (2, 4, 6)  # Winning diagonals
     ]
 player_x = 'X'
 player_o = 'O'
+computer_score = 0
+player_score = 0
 
 
 def create_board():
@@ -40,6 +42,14 @@ def create_board():
     print('7  |8  |9  ')
     print(' ' + board[6] + ' | ' + board[7] + ' | ' + board[8])
     print('   |   |   ')
+
+
+def score_display(player_name):
+    print(f'\n          SCORE BOARD')
+    print(f'    Computer   |     {player_name}')
+    print('-------------------------------')
+    print('               |')
+    print('       ' + str(computer_score) + '       |       ' + str(player_score) + '\n')
 
 
 def get_message(file):
@@ -90,11 +100,12 @@ def winner_display(player):
     create_board()
 
 
-def play_again():
+def play_again(player_name):
     """
     Asks player if they want to continue playing
     or to return the final score and Exit
     """
+    score_display(player_name)
     while True:
         play_again_input = input("Do you want to play again?: (y/n)")
         print(play_again_input.lower())
@@ -104,7 +115,6 @@ def play_again():
 
         if play_again_input == 'y':
             reset_game_board()
-            print('Showing scores...')
             return True
         elif play_again_input == 'n':
             print('They said no dude!')
@@ -160,14 +170,14 @@ def run_game(player_name):
             else:
                 update_board(int(player_input), player_x)
                 if check_game_over(player_x):
-                    if play_again():
+                    if play_again(player_name):
                         continue
                     else:
                         break
 
                 computer_random_choice()
                 if check_game_over(player_o):
-                    if play_again():
+                    if play_again(player_name):
                         continue
                     else:
                         break
