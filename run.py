@@ -1,11 +1,12 @@
 """
 run_game
-create_board - done
-validate_input
-update_board
-check_if_empty - still need to do
-check_for_winner
-computer_random_move
+done - create_board - done
+done - validate_input
+done - update_board
+done - check_if_empty
+check_for_winner -
+check_game_over
+done -computer_random_move
 play_again
 for loop - score keeping
 """
@@ -69,14 +70,21 @@ def check_for_winner():
     Checks winning combinations after player moves
     """
     print('Checking for winner...')
+    return False
 
 
 def check_game_over():
     """
-    Checks if game over, if winner announced or
+    Checks if game over - if winner announced or
     if board is full
     """
     print('checking for game over...')
+    if check_for_winner():
+        return True
+    elif ' ' not in board:
+        return True
+    else:
+        return False
 
 
 def run_game(player_name):
@@ -98,7 +106,9 @@ def run_game(player_name):
                 print('Position is already occupied! Try again...')
             else:
                 update_board(int(player_input), player_x)
-                check_game_over()
+                if check_game_over():
+                    print('Well that was fun!')
+                    # add reset_game/ play_again
 
                 computer_random_choice()
         except ValueError:
