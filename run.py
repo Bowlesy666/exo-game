@@ -4,10 +4,10 @@ done - create_board - done
 done - validate_input
 done - update_board
 done - check_if_empty
-check_for_winner -
-check_game_over > we have a winner
+done - check_for_winner -
+done - check_game_over > we have a winner
 done -computer_random_move
-play_again
+almost done - play_again - has bug, wont accept capitals!
 for loop - score keeping
 """
 import random
@@ -73,7 +73,7 @@ def computer_random_choice():
 def winner_display(player):
     """
     Checks who the player is that won,
-    displays the correct message
+    calls the correct message
     to console, calls next game and
     updates score board
     """
@@ -83,24 +83,27 @@ def winner_display(player):
         message_file = 'loser.txt'
     print(get_message(message_file))
     create_board()
-    play_again()
 
 
 def play_again():
     """
-    asks player if they want to continue playing
-    or to return the final score
+    Asks player if they want to continue playing
+    or to return the final score and Exit
     """
-    input("Do you want to play again?: ")
+    while True:
+        play_again_input = input("Do you want to play again?: (y/n)")
+        print(play_again_input.lower())
+        if play_again_input.lower() not in ('y', 'n'):
+            print('Invalid value, please use lowercase y or n.....')
+            continue
 
-
-def no_winner_display():
-    """
-    Displays tie message and calls next game
-    """
-    print(get_message('tie.txt'))
-    create_board()
-    play_again()
+        if play_again_input == 'y':
+            print('Resetting game board...')
+            print('Showing scores...')
+            return True
+        elif play_again_input == 'n':
+            print('They said no dude!')
+            return False
 
 
 def check_for_winner():
@@ -125,7 +128,8 @@ def check_game_over(player):
         winner_display(player)
         return True
     elif ' ' not in board:
-        no_winner_display()
+        print(get_message('tie.txt'))
+        create_board()
         return True
     else:
         return False
@@ -151,15 +155,17 @@ def run_game(player_name):
             else:
                 update_board(int(player_input), player_x)
                 if check_game_over(player_x):
-                    print('Well that was fun!')
-                    # add reset_game/ play_again
-                    break
+                    if play_again():
+                        continue
+                    else:
+                        break
 
                 computer_random_choice()
                 if check_game_over(player_o):
-                    print('Well the computer just won!')
-                    # add reset_game/ play_again
-                    break
+                    if play_again():
+                        continue
+                    else:
+                        break
         except ValueError:
             print('Hey, hey. were choosing numbers here! stay on track!')
 
