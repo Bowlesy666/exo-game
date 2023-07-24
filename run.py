@@ -61,6 +61,11 @@ def update_board(chosen_position, player_x_or_o):
     board[chosen_position - 1] = player_x_or_o
 
 
+def reset_game_board():
+    global board
+    board = [' ' for i in range(9)]
+
+
 def computer_random_choice():
     while True:
         random_position = random.randint(1, 9)
@@ -98,7 +103,7 @@ def play_again():
             continue
 
         if play_again_input == 'y':
-            print('Resetting game board...')
+            reset_game_board()
             print('Showing scores...')
             return True
         elif play_again_input == 'n':
