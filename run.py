@@ -85,6 +85,14 @@ def computer_random_choice():
             break
 
 
+def score_update(player):
+    global player_score
+    global computer_score
+    if player == 'X':
+        player_score += 1
+    else:
+        computer_score += 1
+
 def winner_display(player):
     """
     Checks who the player is that won,
@@ -140,6 +148,7 @@ def check_game_over(player):
     """
     print('checking for game over...')
     if check_for_winner():
+        score_update(player)
         winner_display(player)
         return True
     elif ' ' not in board:
