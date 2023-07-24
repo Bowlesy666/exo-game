@@ -51,20 +51,17 @@ def update_board(chosen_position, player_x_or_o):
     """
     Updates chosen position with either X or O
     """
-    board[chosen_position - 1] = player_x_or_o 
+    board[chosen_position - 1] = player_x_or_o
     create_board()
 
 
 def computer_random_choice():
     while True:
-        random_position = random.randint(1, 9)
+        random_position = random.randint(0, 8)
         if board[random_position] == ' ':
-            update_board(int(random_position), player_o)
+            update_board(random_position, player_o)
             print(f"Your opponent chose {random_position}")
             break
-        elif board[random_position] is not ' ':
-            computer_random_choice()
-
 
 
 def run_game(player_name):
@@ -76,22 +73,22 @@ def run_game(player_name):
     while True:
         print(f"\n\n{player_name} you're up!")
         create_board()
-        player_input = input('Choose an empty space (1-9)')
+        player_input = int(input('Choose an empty space (1-9)'))
         try:
             if int(player_input) < 1:
                 print('number is too little!')
             elif int(player_input) > 9:
                 print('number is too big!')
+            elif board[player_input - 1] != ' ':
+                print('Position is already occupied! Try again...')
+            else:
+                print('this is the finally part')
+                update_board(int(player_input), player_x)
+                print(board)
+
+                computer_random_choice()
         except ValueError:
             print('Hey, hey. were choosing numbers here! stay on track!')
-        finally:
-            print('this is the finally part')
-            update_board(int(player_input), player_x)
-            print(board)
-
-        computer_random_choice()
-        
-        
 
 
 welcome_message = get_welcome_message('welcome.txt')
