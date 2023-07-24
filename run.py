@@ -39,6 +39,10 @@ def display_gameboard():
 
 
 def score_display(player_name):
+    """
+    Prints an updated score board
+    to the console
+    """
     print(f'\n          SCORE BOARD')
     print(f'    Computer   |     {player_name}')
     print('-------------------------------')
@@ -67,11 +71,19 @@ def update_gameboard(chosen_position, player_x_or_o):
 
 
 def reset_gameboard():
+    """
+    Resets gameboard locations to
+    blank spaces
+    """
     global location
     location = [' ' for i in range(9)]
 
 
 def computer_random_choice():
+    """
+    Gives computer random choice for
+    location
+    """
     while True:
         random_position = random.randint(1, 9)
         if location[random_position - 1] == ' ':
@@ -81,6 +93,9 @@ def computer_random_choice():
 
 
 def score_update(player_identity):
+    """
+    Updates the score variables
+    """
     global player_score
     global computer_score
     if player_identity == 'X':
