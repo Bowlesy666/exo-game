@@ -8,6 +8,7 @@ check_for_winner
 computer_random_move
 
 """
+import random
 
 
 board = [' ' for i in range(9)]
@@ -54,25 +55,42 @@ def update_board(chosen_position, player_x_or_o):
     create_board()
 
 
+def computer_random_choice():
+    while True:
+        random_position = random.randint(1, 9)
+        if board[random_position] == ' ':
+            update_board(int(random_position), player_o)
+            print(f"Your opponent chose {random_position}")
+            break
+        elif board[random_position] is not ' ':
+            computer_random_choice()
+
+
+
 def run_game(player_name):
     """
     Runs the game tic-tac-toe displaying the board,
     receiving input from player and taking the computers turns
 
     """
-    print(f"\n\n{player_name} you're up!")
-    create_board()
-    player_input = input('Choose an empty space (1-9)')
-    try:
-        if int(player_input) < 1:
-            print('number is too little!')
-        elif int(player_input) > 9:
-            print('number is too big!')
-    except ValueError:
-        print('Hey, hey. were choosing numbers here! stay on track!')
-    finally:
-        print('this is the finally part')
-        update_board(int(player_input), player_x)
+    while True:
+        print(f"\n\n{player_name} you're up!")
+        create_board()
+        player_input = input('Choose an empty space (1-9)')
+        try:
+            if int(player_input) < 1:
+                print('number is too little!')
+            elif int(player_input) > 9:
+                print('number is too big!')
+        except ValueError:
+            print('Hey, hey. were choosing numbers here! stay on track!')
+        finally:
+            print('this is the finally part')
+            update_board(int(player_input), player_x)
+            print(board)
+
+        computer_random_choice()
+        
         
 
 
