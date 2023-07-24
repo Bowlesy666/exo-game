@@ -62,6 +62,21 @@ def get_message(file):
     return file_data
 
 
+def get_player_name():
+    """
+    Asks for players name,
+    validates if input is not empty
+    returns name capitalized
+    """
+    while True:
+        player_name = input('>> Hey Player! What is your name?: ')
+        if player_name.strip() == '':
+            print('\nPlease enter a valid name.\n')
+            continue
+        else:
+            return player_name.capitalize()
+
+
 def update_gameboard(chosen_position, player_x_or_o):
     """
     Updates chosen position with either X or O
@@ -210,8 +225,8 @@ def main():
     then runs game and passes player name
     """
     print(get_message('welcome.txt'))
-    player_name = input('>> Hey Player! What is your name?: ')
-    run_game(player_name.capitalize())
+    player_name = get_player_name()
+    run_game(player_name)
 
 
 main()
