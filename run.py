@@ -3,7 +3,7 @@ run_game
 create_board - done
 validate_input
 update_board
-check_if_empty
+check_if_empty - still need to do
 check_for_winner
 computer_random_move
 
@@ -11,6 +11,8 @@ computer_random_move
 
 
 board = [' ' for i in range(9)]
+player_x = 'X'
+player_o = 'O'
 
 
 def create_board():
@@ -44,6 +46,14 @@ def get_welcome_message(file):
     return file_data
 
 
+def update_board(chosen_position, player_x_or_o):
+    """
+    Updates chosen position with either X or O
+    """
+    board[chosen_position - 1] = player_x_or_o 
+    create_board()
+
+
 def run_game(player_name):
     """
     Runs the game tic-tac-toe displaying the board,
@@ -62,7 +72,7 @@ def run_game(player_name):
         print('Hey, hey. were choosing numbers here! stay on track!')
     finally:
         print('this is the finally part')
-        update_board()
+        update_board(int(player_input), player_x)
         
 
 
