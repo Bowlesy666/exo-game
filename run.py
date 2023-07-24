@@ -42,11 +42,11 @@ def create_board():
     print('   |   |   ')
 
 
-def get_welcome_message(file):
+def get_message(file):
     """
     Opens, reads, store as variable and close text file
     keeps run.py file cleaner
-    returns data to be printed before game is run
+    returns data to be printed
     """
     data = open(file)
     file_data = data.read()
@@ -70,6 +70,18 @@ def computer_random_choice():
             break
 
 
+def winner_display(player):
+    if player == 'X':
+        message_file = 'winner.txt'
+    else:
+        message_file = 'loser.txt'
+    print(get_message(message_file))
+
+
+def no_winner_display():
+    print(f"no bugger won")
+
+
 def check_for_winner():
     """
     Checks winning combinations after player moves
@@ -82,15 +94,17 @@ def check_for_winner():
             return True
 
 
-def check_game_over():
+def check_game_over(player):
     """
     Checks if game over - if winner announced or
     if board is full
     """
     print('checking for game over...')
     if check_for_winner():
+        winner_display(player)
         return True
     elif ' ' not in board:
+        no_winner_display()
         return True
     else:
         return False
@@ -115,12 +129,16 @@ def run_game(player_name):
                 print('Position is already occupied! Try again...')
             else:
                 update_board(int(player_input), player_x)
-                if check_game_over():
+                if check_game_over(player_x):
                     print('Well that was fun!')
                     # add reset_game/ play_again
                     break
 
                 computer_random_choice()
+                if check_game_over(player_o):
+                    print('Well the computer just won!')
+                    # add reset_game/ play_again
+                    break
         except ValueError:
             print('Hey, hey. were choosing numbers here! stay on track!')
 
@@ -131,7 +149,7 @@ def main():
     asks for user name
     then runs game and passes player name
     """
-    welcome_message = get_welcome_message('welcome.txt')
+    welcome_message = get_message('welcome.txt')
     print(welcome_message)
     player = input('Hey Player! What is your name?: ')
     run_game(player)
