@@ -6,7 +6,8 @@ update_board
 check_if_empty - still need to do
 check_for_winner
 computer_random_move
-
+play_again
+for loop - score keeping
 """
 import random
 
@@ -56,8 +57,8 @@ def update_board(chosen_position, player_x_or_o):
 
 def computer_random_choice():
     while True:
-        random_position = random.randint(0, 8)
-        if board[random_position] == ' ':
+        random_position = random.randint(1, 9)
+        if board[random_position - 1] == ' ':
             update_board(random_position, player_o)
             print(f"Your opponent chose {random_position}")
             break
@@ -104,7 +105,16 @@ def run_game(player_name):
             print('Hey, hey. were choosing numbers here! stay on track!')
 
 
-welcome_message = get_welcome_message('welcome.txt')
-print(welcome_message)
-player = input('Hey Player! What is your name?: ')
-run_game(player)
+def main():
+    """
+    This is the initial function that runs welcome message
+    asks for user name
+    then runs game and passes player name
+    """
+    welcome_message = get_welcome_message('welcome.txt')
+    print(welcome_message)
+    player = input('Hey Player! What is your name?: ')
+    run_game(player)
+
+
+main()
