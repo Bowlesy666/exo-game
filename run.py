@@ -1,7 +1,5 @@
 """
 colorama
-validation for name input
-txt files
 """
 import random
 
@@ -34,7 +32,7 @@ def display_gameboard():
     print('   -----------')
     print('   7  |8  |9  ')
     print('    ' + location[6] + ' | ' + location[7] + ' | ' + location[8])
-    print('      |   |   ')
+    print('      |   |   \n')
 
 
 def score_display(player_name):

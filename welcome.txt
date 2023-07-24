@@ -1,10 +1,11 @@
-   Welcome to EXO!
 
-The game of X's and O's
-Also known as...
+    Welcome to EXO!
 
-    T | I | C 
-    -----------
-    T | A | C 
-    -----------
-    T | O | E
+ The game of X's and O's
+    Also known as...
+
+       T | I | C 
+      -----------
+       T | A | C 
+      -----------
+       T | O | E
