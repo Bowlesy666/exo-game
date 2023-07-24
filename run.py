@@ -52,7 +52,6 @@ def update_board(chosen_position, player_x_or_o):
     Updates chosen position with either X or O
     """
     board[chosen_position - 1] = player_x_or_o
-    create_board()
 
 
 def computer_random_choice():
@@ -62,6 +61,21 @@ def computer_random_choice():
             update_board(random_position, player_o)
             print(f"Your opponent chose {random_position}")
             break
+
+
+def check_for_winner():
+    """
+    Checks winning combinations after player moves
+    """
+    print('Checking for winner...')
+
+
+def check_game_over():
+    """
+    Checks if game over, if winner announced or
+    if board is full
+    """
+    print('checking for game over...')
 
 
 def run_game(player_name):
@@ -82,9 +96,8 @@ def run_game(player_name):
             elif board[player_input - 1] != ' ':
                 print('Position is already occupied! Try again...')
             else:
-                print('this is the finally part')
                 update_board(int(player_input), player_x)
-                print(board)
+                check_game_over()
 
                 computer_random_choice()
         except ValueError:
