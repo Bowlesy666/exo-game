@@ -8,6 +8,10 @@ Users take it in turns against the computer to get three of their marks in a row
 
 ![Am I Responsive](images/exo-amiresponsive.png)
 
+LInk to my Deployed site [here in Heroku](https://exo-tictactoe-game-aa62eeed9e87.herokuapp.com/)
+
+You are currently on the Exo! game README for [this Github repo](https://github.com/Bowlesy666/exo-game)
+
 ___
 
 ## UX
@@ -50,6 +54,8 @@ I decided to use this subtly and not go too crazy with background colours, findi
 Most interesting part was when I deployed to Heroku after implimentation... for this to work in Heroku you need to "pip3 freeze > requirements.txt" .... once I remembered this the sweating stopped!!
 
 #### Welcome & Output Messages
+
+Welcome and traffic light messages are imported from console_messages.py
 
 ##### Welcome message
 
@@ -174,6 +180,45 @@ After testing there are no known bugs remaining in EXO!
 
 Completed with Pep8 CI python linter on both run.py and console_messages.py
 
+[Link for Pep8 linter](https://pep8ci.herokuapp.com/)
+
 ___
 
+###### Deployment
 
+If you want to crerate your own from scratch [here is the Github template](https://github.com/Code-Institute-Org/python-essentials-template)
+
+To deploy this project:
+
+* Fork or clone the repo - [Exo! Github repo](https://github.com/Bowlesy666/exo-game)
+* create a new app in Heroku
+* in Herokus new app settings add in config vars port 8000 as in the picture. If you have a creds file in your project this also goes here - key = file name and value = file contemt pasted inside
+
+![Heroku config vars](images/exo-config.png)
+
+* staying in Herokus new app settings add in 2 buildpacks Python and Node.js, ensuring python is the top buildpack in the list
+
+![Heroku buildpacks](images/exo-buildpacks.png)
+
+* in herokus deploy tab, select deployment method as github and sign in with your credentials, then paste in your github repo http address to connect your app
+
+![Deploy first eg](images/exo-deploya.png)
+
+* I personally manually deployed the branch main and remember if you make any changes to re deploy using this button, at the end it will give you a link to your deployed project
+
+![Deploy second eg](images/exo-deployb.png)
+
+___
+
+###### Credits
+
+* Idea for structure of game came from a how to video on youtube but when it came to finding it, at the time of starting the project, I couldnt. After implimenting alot of my own code I realised/remembered they had used dictionary method and I ended up using a list method for the gameboard locations. Although there's probably little similarity it helped me with where to start.
+* When getting stuck/lost I turned to the web and the code institute course content, some of the sites I ended up in are as below but I probably used a lot more:
+    * [geeksforgeeks.org](https://www.geeksforgeeks.org/print-colors-python-termin)
+    * [Stackoverflow](https://stackoverflow.com/)
+    * Google
+    * [W3schools](https://www.w3schools.com/python/)
+    * Youtube videos
+* My mentor helped me work through some bugs that i had at the time of the calls and also gave me pointers for future work
+* amiresponsive?
+* Colorama
