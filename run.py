@@ -1,6 +1,6 @@
 import random
-#from console_messages import welcome_message, winner_message
-#from console_messages import loser_message, tie_message
+from console_messages import welcome_message, winner_message
+from console_messages import loser_message, tie_message
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
@@ -55,48 +55,6 @@ def score_display(player_name):
         )
 
 
-def welcome_message():
-    """
-    Prints the welcome message to
-    the console with colours added
-    from colorama
-    """
-    print(Fore.RED + f'\n    Welcome to EXO!\n')
-    print(Fore.BLUE + " The game of X's and O's\n    Also known as...\n")
-    print('       ' + Fore.YELLOW + Back.BLUE + ' T | I | C ' + Back.RESET)
-    print('       ' + Fore.YELLOW + Back.BLUE + '-----------' + Back.RESET)
-    print('       ' + Fore.YELLOW + Back.BLUE + ' T | A | C ' + Back.RESET)
-    print('       ' + Fore.YELLOW + Back.BLUE + '-----------' + Back.RESET)
-    print('       ' + Fore.YELLOW + Back.BLUE + ' T | O | E ' + Back.RESET)
-    return ''
-
-
-def winner_message():
-    print(Fore.GREEN + '\n          Holy Smokes you won!')
-    print(Fore.GREEN + '       Check out your score below')
-    print(
-        Fore.GREEN + ' How many times do you think you can win?' + Fore.RESET
-        )
-    return ''
-
-
-def loser_message():
-    print(Fore.RED + '             Oh No! You lost!')
-    print(
-        Fore.RED +
-        ' Keep trying, im sure you will win next time' +
-        Fore.RESET
-        )
-    return ''
-
-
-def tie_message():
-    print(Fore.YELLOW + "        Well... It's a TIE!")
-    print(Fore.YELLOW + " You're both winners in my eyes <3" + Fore.RESET)
-    return ''
-
-
-
 def get_player_name():
     """
     Asks for players name,
@@ -104,7 +62,7 @@ def get_player_name():
     returns name capitalized
     """
     while True:
-        player_name = input('>> Hey Player! What is your name?: ')
+        player_name = input('>> Hey Player! What is your name?: \n')
         if player_name.strip() == '':
             print('\nPlease enter a valid name.\n')
             continue
@@ -178,7 +136,7 @@ def play_again(player_name):
     score_display(player_name)
     while True:
         play_again_input = input(
-            f">> {player_name}, do you want to play again?: (y/n) ")
+            f">> {player_name}, do you want to play again?: (y/n) \n")
         print(play_again_input.lower())
         if play_again_input.lower() not in ('y', 'n'):
             print(' Invalid value, please use lowercase y or n.....')
@@ -229,7 +187,7 @@ def run_game(player_name):
         print(f"\n {player_name} you're up!\n")
         display_gameboard()
         try:
-            player_location_input = int(input('>> Choose an empty space(1-9)'))
+            player_location_input = int(input('>> Choose an empty space(1-9)\n'))
         except ValueError:
             print('\n Hey, hey. were choosing numbers here! stay on track!')
             continue
