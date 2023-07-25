@@ -187,7 +187,9 @@ def run_game(player_name):
         print(f"\n {player_name} you're up!\n")
         display_gameboard()
         try:
-            player_location_input = int(input('>> Choose an empty space(1-9)\n'))
+            player_location_input = int(
+                input('>> Choose an empty space(1-9)\n')
+                )
         except ValueError:
             print('\n Hey, hey. were choosing numbers here! stay on track!')
             continue
