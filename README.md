@@ -223,7 +223,7 @@ ___
     * Google
     * [W3schools](https://www.w3schools.com/python/)
     * Youtube videos
-* My mentor helped me work through some bugs that i had at the time of the calls and also gave me pointers for future work
+* My mentor reviewed my code and also gave me pointers for future work
 * amiresponsive?
 * Colorama
 * Lucidflow
