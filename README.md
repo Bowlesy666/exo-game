@@ -142,6 +142,10 @@ The Tic-Tac-Toe game uses a list-based data model to represent the game board. T
 
 The elements can be 'X', 'O', or ' ' (empty space). The game also uses variables to track the player's score and the computer's score.
 
+Flow chart for work flow below:
+
+![flowchart co lucidflow](images/exo-flowchart.png)
+
 ___
 
 #### Testing
@@ -222,3 +226,4 @@ ___
 * My mentor helped me work through some bugs that i had at the time of the calls and also gave me pointers for future work
 * amiresponsive?
 * Colorama
+* Lucidflow
