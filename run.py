@@ -1,7 +1,8 @@
 import random
+from console_messages import welcome_message, winner_message
+from console_messages import loser_message, tie_message
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
-from console_messages import welcome_message, winner_message, loser_message, tie_message
 
 
 WINNING_COMBOS = [
@@ -42,18 +43,17 @@ def score_display(player_name):
     """
     print(Fore.RED + f'\n          SCORE BOARD')
     print(
-        Fore.CYAN + f'    Computer   ' + 
+        Fore.CYAN + f'    Computer   ' +
         Fore.RED + '|' + Fore.GREEN + f'     {player_name}'
         )
     print(Fore.RED + '-------------------------------')
     print(Fore.RED + '               |')
-    middle = Fore.RED +  '       |       '
+    middle = Fore.RED + '       |       '
     print(
-        Fore.CYAN + '       ' + str(computer_score) + 
+        Fore.CYAN + '       ' + str(computer_score) +
         middle + Fore.GREEN + str(player_score) + '\n' + Fore.RESET
         )
 
-score_display('David')
 
 def get_player_name():
     """
@@ -96,8 +96,8 @@ def computer_random_choice():
         if location[random_position - 1] == ' ':
             update_gameboard(random_position, PLAYER_O)
             print(
-                Fore.CYAN + 
-                f"\n Your opponent chose {random_position}" + 
+                Fore.CYAN +
+                f"\n Your opponent chose {random_position}" +
                 Fore.RESET)
             break
 

@@ -1,5 +1,6 @@
 from colorama import Fore, Back
 
+
 def welcome_message():
     """
     Prints the welcome message to
@@ -28,12 +29,14 @@ def winner_message():
 def loser_message():
     print(Fore.RED + '             Oh No! You lost!')
     print(
-        Fore.RED + 
-        ' Keep trying, im sure you will win next time' + 
+        Fore.RED +
+        ' Keep trying, im sure you will win next time' +
         Fore.RESET
         )
+    return ''
 
 
 def tie_message():
     print(Fore.YELLOW + "        Well... It's a TIE!")
     print(Fore.YELLOW + " You're both winners in my eyes <3" + Fore.RESET)
+    return ''
