@@ -1,17 +1,17 @@
-"""
-colorama
-"""
 import random
+from colorama import Fore, Back, Style, init
+init(autoreset=True)
+from console_messages import welcome_message, winner_message, loser_message, tie_message
 
 
-location = [' ' for i in range(9)]
-winning_combos = [
+WINNING_COMBOS = [
     (0, 1, 2), (3, 4, 5), (6, 7, 8),  # Winning rows
     (0, 3, 6), (1, 4, 7), (2, 5, 8),  # Winning columns
     (0, 4, 8), (2, 4, 6)  # Winning diagonals
     ]
-player_x = 'X'
-player_o = 'O'
+PLAYER_X = Fore.GREEN + 'X' + Fore.RESET
+PLAYER_O = Fore.CYAN + 'O' + Fore.RESET
+location = [' ' for i in range(9)]
 computer_score = 0
 player_score = 0
 
@@ -46,18 +46,6 @@ def score_display(player_name):
     print('               |')
     middle = '       |       '
     print('       ' + str(computer_score) + middle + str(player_score) + '\n')
-
-
-def get_message(file):
-    """
-    Opens, reads, store as variable and close text file
-    keeps run.py file cleaner
-    returns data to be printed
-    """
-    data = open(file)
-    file_data = data.read()
-    data.close()
-    return file_data
 
 
 def get_player_name():
@@ -99,8 +87,11 @@ def computer_random_choice():
     while True:
         random_position = random.randint(1, 9)
         if location[random_position - 1] == ' ':
-            update_gameboard(random_position, player_o)
-            print(f"\n Your opponent chose {random_position}")
+            update_gameboard(random_position, PLAYER_O)
+            print(
+                Fore.CYAN + 
+                f"\n Your opponent chose {random_position}" + 
+                Fore.RESET)
             break
 
 
@@ -110,7 +101,7 @@ def score_update(player_identity):
     """
     global player_score
     global computer_score
-    if player_identity == 'X':
+    if player_identity == Fore.GREEN + 'X' + Fore.RESET:
         player_score += 1
     else:
         computer_score += 1
@@ -123,11 +114,10 @@ def winner_display(player_identity):
     to console, calls next game and
     updates score board
     """
-    if player_identity == 'X':
-        message_file = 'winner.txt'
+    if player_identity == Fore.GREEN + 'X' + Fore.RESET:
+        print(winner_message())
     else:
-        message_file = 'loser.txt'
-    print(get_message(message_file))
+        print(loser_message())
     display_gameboard()
 
 
@@ -157,7 +147,7 @@ def check_for_winner():
     """
     Checks winning combinations after player moves
     """
-    for combo in winning_combos:
+    for combo in WINNING_COMBOS:
         zero, one, two = combo
         if location[zero] == location[one] == location[two] != ' ':
             return True
@@ -173,7 +163,7 @@ def check_game_over(player_name):
         winner_display(player_name)
         return True
     elif ' ' not in location:
-        print(get_message('tie.txt'))
+        print(tie_message())
         display_gameboard()
         return True
     else:
@@ -201,15 +191,15 @@ def run_game(player_name):
         elif location[player_location_input - 1] != ' ':
             print(' Position is already occupied! Try again...\n')
         else:
-            update_gameboard(int(player_location_input), player_x)
-            if check_game_over(player_x):
+            update_gameboard(int(player_location_input), PLAYER_X)
+            if check_game_over(PLAYER_X):
                 if play_again(player_name):
                     continue
                 else:
                     break
 
             computer_random_choice()
-            if check_game_over(player_o):
+            if check_game_over(PLAYER_O):
                 if play_again(player_name):
                     continue
                 else:
@@ -222,7 +212,7 @@ def main():
     asks for user name
     then runs game and passes player name
     """
-    print(get_message('welcome.txt'))
+    print(welcome_message())
     player_name = get_player_name()
     run_game(player_name)
 
