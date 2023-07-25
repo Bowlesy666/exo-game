@@ -1,13 +1,29 @@
 ![EXO Banner](images/exo-banner.png)
+
 # EXO!
 
 EXO! is a command line tic-tac-toe game written in Python.
 
-Users take it in turns against the computer to get three in a row, each time there is a winner or a tie the score board is displayed.
+Users take it in turns against the computer to get three of their marks in a row, each time there is a winner or a tie the score board is displayed.
 
 ![Am I Responsive](images/exo-amiresponsive.png)
 
-## Game Play
+___
+
+## UX
+
+### User Stories
+
+* Older generations looking to play an easy game to remind them of their youth
+* Users wanting to play the game but do not want to waste paper
+* Users wanting to play the game and have the score calculated for them each time they play
+* Users who want to play the game but have no one to play with
+
+### Target Audience
+
+* Game is targetted at all users, young or old, looking to play an easy game
+
+### Game Play
 
 * You are given a display of 3 by 3 squares, total of 9
 * You, the player, must give your name
@@ -15,3 +31,101 @@ Users take it in turns against the computer to get three in a row, each time the
 * The computer is always player O
 * You are prompted to give your first choice of squares
 * The aim of the game is to achieve three squares in a row
+    * Horizontally
+    * Vertically
+    * Diagonally
+
+___
+
+### Features
+
+#### Colorama
+
+![Colorama screenshot from geeksforgeeks.org](images/exo-colorama.png)
+
+Shout out to my mentor Rory! He spoke to me about adding colorama to my project, I found many articles for using this library online but i used geeksforgeeks.org when it came time to implimenting it in my game.
+
+I decided to use this subtly and not go too crazy with background colours, finding that it really helped to pop the details I wanted to draw attention to in the console.
+
+Most interesting part was when I deployed to Heroku after implimentation... for this to work in Heroku you need to "pip3 freeze > requirements.txt" .... once I remembered this the sweating stopped!!
+
+#### Welcome & Output Messages
+
+##### Welcome message
+
+![Welcome message screenshot](images/exo-welcome.png)
+
+* Welcome message lets the user know what the game is called, what the game is also more commonly known as and uses colours to highlight the different parts of the welcome message.
+    * Title, Red on black, lets user know this is what to look at first
+    * Sub title, Blue on black, gives more information on the game
+    * Logo, Yellow on Blue, yellow on blue are extremely accessible colours and gives the fun element
+
+##### Game End Traffic Light Messages System
+
+![Game end - Green](images/exo-winner.png)
+![Game end - Yellow](images/exo-tie.png)
+![Game end - Red](images/exo-loser.png)
+
+* Green - Winner
+* Yellow - Game Tie
+* Red - Loser
+
+Traffic light system is very intuitive, everyone already associates these colours with the intended meanings. This is displayed at the top, final gameboard in the centre and the score board at the bottom before we ask the user if they want to play again
+
+#### Gameboard
+
+![Exo gameboard](images/exo-gameboard.png)
+
+The gameboard is a 3 x 3 square and the locations are numbered to help users with their move choices. The players mark is a green 'X' and the computers mark is a cyan coloured 'O'. The white gameboard pops off the black background and the player/computer marks are easy to distinguish and will not blurr with the gameboard or numbers
+
+#### Scoreboard
+
+![Exo score board](images/exo-score-winner.png)
+
+Every time the game ends the user is presented with the winner/loser/game-tie traffic light system message, the gameboard is shown again to visually confirm the winning locations and the score board is presented below.
+
+The score board and its title is in red and the computer/player colours and their score are kept the same as the 'X's and 'O's for continuity. This is displayed directly above asking the user to play again. i feel the whole visual gives the user the need to play again
+
+#### Random Library
+
+![Exo random meme, highlight random library use](images/exo-random.png)
+
+The random libraray was imported and utilised for the computers move selection. It is asked for a random integer with a range of 1 to 9
+
+#### User Input Error Handling & Input Vaidation
+
+##### User Name
+
+![User name errors](images/exo-name-validation.png)
+
+* We validate if the name is:
+    * Not blank
+    * Less than 15 characters(so can fit in score board)
+    * We then capitalise so at the minimum it the first letter is capitalised
+    * Numbers are allowed as usernames frequently have numbers
+
+##### User Move Selection
+
+![User move selection errors](images/exo-move-selection-validation.png)
+
+* We validate if the move selection is:
+    * Not blank
+    * An integer only
+    * Not too big
+    * Not too small
+    * An empty space on the gameboard
+
+In addition to these errors we also validate if the move taken is a winning/game tie move
+
+##### Play Again Input
+
+![Play again error handling](images/exo-play-again.png)
+
+* We validate if the play again selection is:
+    * Not blank / empty string
+    * Not more characters than necessary
+    * Not an incorrect character
+    * is only a y or n
+    * input uses .lower() method so can accep Y or N also
+
+___

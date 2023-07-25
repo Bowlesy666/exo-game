@@ -142,7 +142,7 @@ def play_again(player_name):
             f">> {player_name}, do you want to play again?: (y/n) ").lower()
         if play_again_input.lower() not in ('y', 'n'):
             if len(play_again_input) >= 2:
-                print("Wer'e not writing an essay here, just use y or n...")
+                print("We're not writing an essay here, just use y or n...")
                 continue
             else:
                 print(' Please use y or n ...its not difficult...')
