@@ -62,9 +62,12 @@ def get_player_name():
     returns name capitalized
     """
     while True:
-        player_name = input('>> Hey Player! What is your name?: \n')
+        player_name = input('>> Hey Player! What is your name?: \n>> ')
         if player_name.strip() == '':
             print('\nPlease enter a valid name.\n')
+            continue
+        elif len(player_name) >= 14:
+            print("Thats too many characters...maybe try a nickname instead?")
             continue
         else:
             return player_name.capitalize()
@@ -136,16 +139,20 @@ def play_again(player_name):
     score_display(player_name)
     while True:
         play_again_input = input(
-            f">> {player_name}, do you want to play again?: (y/n) \n")
-        print(play_again_input.lower())
+            f">> {player_name}, do you want to play again?: (y/n) ").lower()
         if play_again_input.lower() not in ('y', 'n'):
-            print(' Invalid value, please use lowercase y or n.....')
-            continue
+            if len(play_again_input) >= 2:
+                print("Wer'e not writing an essay here, just use y or n...")
+                continue
+            else:
+                print(' Please use y or n ...its not difficult...')
+                continue
 
         if play_again_input == 'y':
             reset_gameboard()
             return True
-        elif play_again_input == 'n':
+
+        if play_again_input == 'n':
             print('\n Thank you for playing EXO!')
             return False
 
@@ -181,14 +188,13 @@ def run_game(player_name):
     """
     Runs the game tic-tac-toe displaying the board,
     receiving input from player and taking the computers turns
-
     """
     while True:
         print(f"\n {player_name} you're up!\n")
         display_gameboard()
         try:
             player_location_input = int(
-                input('>> Choose an empty space(1-9)\n')
+                input('>> Choose an empty space (1-9)\n')
                 )
         except ValueError:
             print('\n Hey, hey. were choosing numbers here! stay on track!')
