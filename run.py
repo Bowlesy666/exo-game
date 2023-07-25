@@ -40,13 +40,20 @@ def score_display(player_name):
     Prints an updated score board
     to the console
     """
-    print(f'\n          SCORE BOARD')
-    print(f'    Computer   |     {player_name}')
-    print('-------------------------------')
-    print('               |')
-    middle = '       |       '
-    print('       ' + str(computer_score) + middle + str(player_score) + '\n')
+    print(Fore.RED + f'\n          SCORE BOARD')
+    print(
+        Fore.CYAN + f'    Computer   ' + 
+        Fore.RED + '|' + Fore.GREEN + f'     {player_name}'
+        )
+    print(Fore.RED + '-------------------------------')
+    print(Fore.RED + '               |')
+    middle = Fore.RED +  '       |       '
+    print(
+        Fore.CYAN + '       ' + str(computer_score) + 
+        middle + Fore.GREEN + str(player_score) + '\n' + Fore.RESET
+        )
 
+score_display('David')
 
 def get_player_name():
     """
