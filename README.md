@@ -129,3 +129,51 @@ In addition to these errors we also validate if the move taken is a winning/game
     * input uses .lower() method so can accep Y or N also
 
 ___
+
+### Data Model
+
+The Tic-Tac-Toe game uses a list-based data model to represent the game board. The "location" list holds the state of each position on the board, where each element represents a position. 
+
+The elements can be 'X', 'O', or ' ' (empty space). The game also uses variables to track the player's score and the computer's score.
+
+___
+
+#### Testing
+
+All testing has been completed on Heroku and Codeanywhere console manually. It has also been passeed through code institutes pep8 CI python linter
+
+| Feature | Type of Test | Expected Outcome | Result | Pass/Fail |
+| ------- | ------------ | ---------------- | ------ | --------- |
+| Username | Correct input | Continue and display name, capitalized, with message and gameboard | displayed name, capitalized, with message and gameboard | Pass |
+| Username | Blank | Error message and repeats input prompt | Error message and repeats input prompt | Pass |
+| Username | input longer than 15 characters | Error message and repeats input prompt | Error message and repeats input prompt | Pass |
+| User move selection | integer 1 - 9 in a known blank space | Continue with computer move and display updated gameboard | Computer move completed and displayed updated gameboard | Pass |
+| User move selection | Blank | Error message and repeats input prompt | Error message and repeats input prompt | Pass |
+| User move selection | String | Error message and repeats input prompt | Error message and repeats input prompt | Pass |
+| User move selection | Numbers outside of gameboard range (gameboard range = 1-9) | Error message and repeats input prompt | Error message and repeats input prompt | Pass |
+| User move selection | Occupied gameboard space | Error message and repeats input prompt | Error message and repeats input prompt | Pass |
+| Play again input | Correct input - 'y','n','Y','N' | Exit game with thank you message or continue with reset gameboard | Exited game with thank you message or continued with resetting gameboard | Pass |
+| Play again input | Blank | Error message and repeats input prompt | Error message and repeats input prompt | Pass |
+| Play again input | Incorrect character | Error message and repeats input prompt | Error message and repeats input prompt | Pass |
+| Play again input | Too many characters | Error message and repeats input prompt | Error message and repeats input prompt | Pass |
+| Winning move | Logic run through test | Display winner message and display updated score board | Display winner message and display updated score board | Pass |
+| Game tie move | Logic run through test | Display game tie message and display score board that is not updated | Display winner message and display score board that is not updated | Pass |
+| Losing move | Logic run through test | Display loser message and display updated score board | Display loser message and display updated score board | Pass |
+
+##### Bugs
+
+After testing there are no known bugs remaining in EXO!
+
+* I have overcome several bugs during production of Exo! I utilised the print statement method aswell as experimenting with different techniques, some bugs fixed are listed below:
+    * computer move Random was giving incorrect value - print statement at each point in the function showed me to - 1 as range on board is 1 - 9 but list of locations go from 0 - 8
+    * Play again input was not accepting capital Y or N. problem solving with mentor we explored many options and foind adding .lower() to the input itself worked where adding .lower() to variable afterwards at error handling stage was not
+    * Colorama broke game when deploying it to Heroku(it worked in Codeanywhere), after sweating profusely I had to "pip3 freeze > requirements.txt" so colorama would be added to Heroku when deploying
+    * Colroame would not work on txt files that I was extracting for welcome/win/tie/lose messages. I changed the txt file system into an library of print functions with colour.
+
+##### Validator testing
+
+Completed with Pep8 CI python linter on both run.py and console_messages.py
+
+___
+
+
