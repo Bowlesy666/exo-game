@@ -95,7 +95,7 @@ def computer_random_choice():
     location
     """
     while True:
-        random_position = random.randint(1, 9)
+        random_position = random.randint(1, 10)
         if location[random_position - 1] == ' ':
             update_gameboard(random_position, PLAYER_O)
             print(

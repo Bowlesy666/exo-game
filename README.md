@@ -216,7 +216,7 @@ ___
 
 ###### Credits
 
-* Idea for structure of game came from a how to video on youtube but when it came to finding it, at the time of starting the project, I couldnt. After implimenting alot of my own code I realised/remembered they had used dictionary method and I ended up using a list method for the gameboard locations. Although there's probably little similarity it helped me with where to start.
+* Idea for structure of game came from a how to video on youtube but when it came to finding it, at the time of starting the project, I couldnt. After implimenting alot of my own code I realised/remembered they had used dictionary method and I ended up using a list method for the gameboard locations. Although there's probably little similarity it helped me with where to start. For the gameboard design I utilised [this instructional how to web page,](https://dev.to/chizzyedoka/build-a-tic-tac-toe-game-with-python-1oa3) and modified it by numbering it so it was easier for player to select their next move. Decided to use this as it was visually appealing.
 * When getting stuck/lost I turned to the web and the code institute course content, some of the sites I ended up in are as below but I probably used a lot more:
     * [geeksforgeeks.org](https://www.geeksforgeeks.org/print-colors-python-termin)
     * [Stackoverflow](https://stackoverflow.com/)
